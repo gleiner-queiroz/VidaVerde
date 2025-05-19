@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel Dinâmico - Vida Verde</title>
+  <link rel="stylesheet" href="painel.css" />
+</head>
+<body>
+  <button onclick="history.back()">Voltar</button>
+  <h1>Painel Dinâmico de Consultas - Vida Verde</h1>
+ 
+  <div class="container">
+    <label for="categoryFilter">Filtrar por Categoria:</label>
+    <select id="categoryFilter">
+      <option value="all">Todas</option>
+      <option value="feira">Feiras Locais</option>
+      <option value="horta">Hortas Comunitárias</option>
+      <option value="doacao">Doações</option>
+    </select>
+
+    <label for="searchInput">Pesquisar por Nome ou Local:</label>
+    <input type="text" id="searchInput" placeholder="Digite para pesquisar..." />
+
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Local</th>
+          <th>Horário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas serão inseridas dinamicamente -->
+      </tbody>
+    </table>
+    <div id="no-results" class="no-results" style="display:none;">Nenhum resultado encontrado.</div>
+  </div>
+
+  <script>
+    const data = [
+      { category: 'feira', name: 'Feira Central', location: 'Praça Central', schedule: 'Sábados 7h-13h' },
+      { category: 'feira', name: 'Feira Verde', location: 'Parque das Flores', schedule: 'Quartas 15h-20h' },
+      { category: 'feira', name: 'Feira do Bairro Novo', location: 'Rua Principal', schedule: 'Domingos 8h-12h' },
+
+      { category: 'horta', name: 'Horta do Jardim', location: 'Rua das Flores, 45', schedule: 'Aberta diariamente 8h-18h' },
+      { category: 'horta', name: 'Horta Solidária', location: 'Rua Verde, 123', schedule: 'Sábados 9h-14h' },
+      { category: 'horta', name: 'Horta Escola', location: 'Av. das Nações, 200', schedule: 'Visitas agendadas' },
+
+      { category: 'doacao', name: 'Centro de Ação Social', location: 'Av. Solidariedade, 100', schedule: 'Seg-Sex 9h-17h' },
+      { category: 'doacao', name: 'Instituto de Solidariedade', location: 'Rua da Esperança, 75', schedule: 'Sábados 10h-14h' },
+      { category: 'doacao', name: 'Projeto Esperança', location: 'Praça da Paz', schedule: 'Quartas 14h-18h' },
+    ];
+
+    const categoryFilter = document.getElementById('categoryFilter');
+    const searchInput = document.getElementById('searchInput');
+    const tableBody = document.querySelector('#data-table tbody');
+    const noResultsDiv = document.getElementById('no-results');
+
+    function renderTable(filteredData) {
+      tableBody.innerHTML = '';
+      if (filteredData.length === 0) {
+        noResultsDiv.style.display = 'block';
+        return;
+      }
+      noResultsDiv.style.display = 'none';
+
+      filteredData.forEach(item => {
+        const tr = document.createElement('tr');
+
+        const categoryTd = document.createElement('td');
+        categoryTd.textContent = capitalizeFirstLetter(item.category);
+        tr.appendChild(categoryTd);
+
+        const nameTd = document.createElement('td');
+        nameTd.textContent = item.name;
+        tr.appendChild(nameTd);
+
+        const locationTd = document.createElement('td');
+        locationTd.textContent = item.location;
+        tr.appendChild(locationTd);
+
+        const scheduleTd = document.createElement('td');
+        scheduleTd.textContent = item.schedule;
+        tr.appendChild(scheduleTd);
+
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function filterData() {
+      const categoryValue = categoryFilter.value;
+      const searchValue = searchInput.value.toLowerCase();
+
+      let filtered = data;
+
+      if (categoryValue !== 'all') {
+        filtered = filtered.filter(item => item.category === categoryValue);
+      }
+
+      if (searchValue) {
+        filtered = filtered.filter(item =>
+          item.name.toLowerCase().includes(searchValue) ||
+          item.location.toLowerCase().includes(searchValue)
+        );
+      }
+
+      renderTable(filtered);
+    }
+
+    categoryFilter.addEventListener('change', filterData);
+    searchInput.addEventListener('input', filterData);
+
+    // Inicializa a tabela com todos os dados
+    renderTable(data);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário de Contato - Vida Verde</title>
+  <link rel="stylesheet" href="formulario.css" />
+</head>
+<body>
+  <header>
+    <h1>Contato - Vida Verde</h1>
+    <button onclick="history.back()">Voltar</button>
+  </header>
+  <main>
+    <section class="form-section">
+      <form id="contactForm" novalidate>
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" name="name" placeholder="Digite seu nome" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@dominio.com" required />
+
+        <label for="subject">Assunto:</label>
+        <select id="subject" name="subject" required>
+          <option value="" disabled selected>Selecione o assunto</option>
+          <option value="feiras">Feiras Locais</option>
+          <option value="hortas">Hortas Comunitárias</option>
+          <option value="doacoes">Doações</option>
+          <option value="parcerias">Parcerias</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Escreva aqui sua mensagem..." required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="responseMessage" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2023 Vida Verde - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const responseMessage = document.getElementById('responseMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if(!form.checkValidity()) {
+        responseMessage.textContent = 'Por favor, preencha todos os campos corretamente.';
+        responseMessage.style.color = 'red';
+        return;
+      }
+
+      responseMessage.textContent = 'Obrigado pelo contato! Responderemos em breve.';
+      responseMessage.style.color = 'green';
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
