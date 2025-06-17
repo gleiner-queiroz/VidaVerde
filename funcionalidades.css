@@ -1,10 +1,11 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4fbf0;
-    color: #2a4d20;
+    color: #4caf50;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
   }
   
   header {
@@ -50,7 +51,7 @@ body {
   }
   button {
     background-color: #4caf50;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;

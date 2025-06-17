@@ -1,5 +1,13 @@
-text-align: center;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+
 }
+
+head{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 main {
     max-width: 900px;
     margin: 30px auto;
@@ -7,7 +15,9 @@ main {
     padding: 25px 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 h1, h2 {
     color: #3b621d;
     margin-bottom: 15px;
@@ -34,6 +44,16 @@ footer {
     width: 100%;
     margin-top: 40px;
 }
+
+  button {
+    background-color: #4caf50;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
 header {
     background-color: #4caf50;
     color: white;

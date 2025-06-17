@@ -1,7 +1,8 @@
 body {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f8f0;
-    color: #2e5d2e;
+    color: #4caf50;
     margin: 0;
     padding: 20px;
     line-height: 1.5;
@@ -62,7 +63,7 @@ body {
     text-align: center;
   }
   button {
-    background-color: #ffffff;
+    background-color: #4caf50;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
     border: none;

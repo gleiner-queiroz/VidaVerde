@@ -5,6 +5,7 @@
 }
 body{
     background: radial-gradient(#c7f7bc8e, rgba(179, 250, 161, 0.973));
+     background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
     align-items: center;
     height: 100vh;
     display: flex;
@@ -68,7 +69,7 @@ body{
     clip-path: polygon(0% 0, 100% 0, 35% 100%, 0% 100%);
 }
 .login::before{
-    left 0;
+    
     height: 32rem;
     transform: rotate(-30deg);
     transform-origin: top left;
@@ -102,9 +103,9 @@ body{
 img{
     border-radius: 40px;
 }
-button {
-    background-color: #4caf50;
-    color: rgb(255, 255, 255);
+  button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
